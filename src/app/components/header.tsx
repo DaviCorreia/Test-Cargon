@@ -1,26 +1,29 @@
 "use client"
 
-import { Inter, Inter_Tight, Saira_Stencil_One } from "next/font/google"
 import styled from "styled-components"
-import { PrimaryInput, PrimaryInputWSearchIcon } from "./primary-input"
+
+import { Saira_Stencil_One } from 'next/font/google'
+
+
+import { PrimaryInputWSearchIcon } from "./primary-input"
 import { CartControl } from "./cart-control"
+import { useFilter } from "@/hooks/useFilter"
 
 const sairaStencil = Saira_Stencil_One({
     weight:['400'],
     subsets: ['latin'] 
 })
- 
+
 interface HeaderProps {
 
 }
-
-const TagHeader = styled.header`
+const TagHeader =styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 160px;
+    padding: 12px 24px;
 
-     > div {
+    > div {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -31,22 +34,39 @@ const TagHeader = styled.header`
         padding: 20px 160px;
     }
 
+
 `
 const Logo = styled.a`
     color: var(--logo-color);
     font-weight: 400;
-    font-size: 40px;
+    font-size: 20px;
     line-height: 150%;
+    text-decoration: none;
 
+    @media(min-width: ${props => props.theme.tableBreakpoint}){
+        font-size: 24px;
+    }
+
+    @media(min-width: ${props => props.theme.desktopBreakpoint}){
+        font-size: 40px;
+    }
 `
 export function Header(props : HeaderProps){
+
+    const {setSearch, search} = useFilter();
+    
     return(
         <TagHeader>
-            <Logo className={sairaStencil.className}>davi</Logo>
+            <Logo className={sairaStencil.className}href="/">CAPPUTEENO</Logo>
             <div>
-                <PrimaryInputWSearchIcon placeholder="Procurando por algo específico?"/>
+            <PrimaryInputWSearchIcon
+                    value={search}
+                    handleChange={setSearch}
+                    placeholder="Procurando por algo específico?"
+                />
                 <CartControl/>
             </div>
+
         </TagHeader>
     )
 }

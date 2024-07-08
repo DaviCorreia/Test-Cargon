@@ -1,9 +1,10 @@
 "use client"
 
-import { DefaultPageLayout } from '@/components/default-page-layout'
-import { FilterBar } from '@/components/filter-bar'
+
 import { styled } from 'styled-components'
 import { ProductsList } from './components/products-list'
+import { FilterBar } from './components/filter-bar'
+import { DefaultPageLayout } from './components/default-page-layout'
 
 const PageWrapper = styled.main`
   display: flex;

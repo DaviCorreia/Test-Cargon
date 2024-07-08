@@ -3,10 +3,12 @@ export interface Product {
     price: number,
     image_url: string,
     details?: string,
+    id: string,
     sport?: string
 }
 
 export interface ProductInCart extends Product {
+    id: string
     quantity: number
 }
 

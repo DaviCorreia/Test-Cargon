@@ -57,8 +57,8 @@ export function FilterByType(){
             >Camisetas</FilterItem>
 
             <FilterItem 
-            selected={type === FilterType.MUG}
-            onClick={() => handleChangeType(FilterType.MUG)}
+            selected={type === FilterType.SOCKS}
+            onClick={() => handleChangeType(FilterType.SOCKS)}
             >Caneca</FilterItem>
 
         </FilterList>

@@ -1,13 +1,12 @@
 import { useRouter } from "next/navigation"
 import { styled } from "styled-components"
-
-
+import { Divider } from "./divider"
 
 interface ProductCardProps {
     image: string,
     title: string,
     price: number,
-    
+    id: string
 }
 
 const Card = styled.div`
@@ -54,10 +53,10 @@ const Card = styled.div`
 
 export function ProductCard(props : ProductCardProps){
     const router = useRouter();
-    
+    const price = (props.price)
 
     const handleNavigate = () => {
-        router.push("/product?price=" + props.price);
+        router.push("/product?id=" + props.id);
     }
 
     return(
@@ -65,7 +64,7 @@ export function ProductCard(props : ProductCardProps){
             <img src={props.image}/>
             <div>
                 <h3>{props.title}</h3>
-               
+                <Divider/>
                 <p>{price}</p>
             </div>
         </Card>
