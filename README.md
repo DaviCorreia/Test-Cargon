@@ -2,9 +2,8 @@
 
 ## 🚀 Sobre
 
-O Teste Cargon Marketplace foi criado para aprimorar minhas habilidades em React, Next.js e Typescript, proporcionando a expansão de conhecimento e enfrentando desafios práticos no desenvolvimento frontend.
 
-O desafio consiste em implementar uma plataforma de comércio eletrônico para a venda de canecas e camisetas, apresentando as seguintes funcionalidades:
+O desafio consiste em implementar uma plataforma de comércio eletrônico , apresentando as seguintes funcionalidades:
 
 - [x] Catálogo de produtos 
 - [x] Filtragem de produtos por categoria
