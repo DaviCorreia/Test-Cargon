@@ -21,7 +21,7 @@ export function ProductsList(){
             <ProductCard
                 key={product.id}
                 title={product.name}
-                price={product.price}
+                price={product.price_in_cents}
                 image={product.image_url}
                 id={product.id}
             />

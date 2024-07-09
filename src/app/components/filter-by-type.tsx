@@ -57,9 +57,14 @@ export function FilterByType(){
             >Camisetas</FilterItem>
 
             <FilterItem 
-            selected={type === FilterType.SOCKS}
-            onClick={() => handleChangeType(FilterType.SOCKS)}
-            >Caneca</FilterItem>
+            selected={type === FilterType.MUG}
+            onClick={() => handleChangeType(FilterType.MUG)}
+            >Calção</FilterItem>
+
+            <FilterItem 
+            selected={type === FilterType.SOCK}
+            onClick={() => handleChangeType(FilterType.SOCK)}
+            >Meia</FilterItem>
 
         </FilterList>
     )

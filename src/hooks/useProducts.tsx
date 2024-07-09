@@ -1,10 +1,9 @@
-
+import { ProductsFetchResponse } from "@/types/products-response";
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosPromise } from "axios";
 import { useFilter } from "./useFilter";
+import {  mountQuery } from "@/utils/graphql-filters";
 import { useDeferredValue } from "react";
-import { ProductsFetchResponse } from "@/types/products-response";
-import { mountQuery } from "@/utils/graphql-filters";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
 
@@ -19,13 +18,10 @@ export function useProducts(){
     const { data } = useQuery({
       queryFn: () => fetcher(query),
       queryKey: ['products', type, priority],
-
-      staleTime: 1000 * 60 * 2
-
+      staleTime: 1000 * 60 * 1
     })
 
-    const products =  data?.data?.data?.products
-
+    const products =  data?.data?.data?.allProducts
     const filteredProducts = products?.filter(product => product.name.toLowerCase().includes(searchDeferred.toLowerCase()))
 
     return {

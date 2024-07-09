@@ -1,14 +1,12 @@
 "use client";
 
-
 import { useProduct } from "@/hooks/useProduct";
-import { Product } from "@/types/product";
-
-import { styled } from "styled-components"
+import { Product as ProductType } from "@/types/product"; // Renomeado para evitar conflito
+import { formatPrice } from "@/utils/format-price";
+import { styled } from "styled-components";
 import { DefaultPageLayout } from "../components/default-page-layout";
 import { BackBtn } from "../components/back-button";
 import { ShopBagIcon } from "../components/icons/shopping-bag-icon";
-
 
 interface ProductProps {
 
@@ -109,7 +107,7 @@ const ProductInfo = styled.div`
     }
 `
 
-export default function Product({ searchParams }: { searchParams: { id: string }}) {
+export default function ProductPage({ searchParams }: { searchParams: { id: string }}) { // Renomeado para ProductPage
     const { data } = useProduct(searchParams.id);
     
     const handleAddToCart = () => {
@@ -140,13 +138,13 @@ export default function Product({ searchParams }: { searchParams: { id: string }
                     <img src={data?.image_url}/>
                     <div>
                         <ProductInfo>
-                            <span>{data?.sport}</span>
+                            <span>{data?.category}</span>
                             <h2>{data?.name}</h2>
-                            <span>{(data?.price ?? 0)}</span>
-                            <p>*Frete de R$40,00 para todo o Brasil. Grátis para compras acima de R$900,00.</p>
+                            <span>{formatPrice(data?.price_in_cents ?? 0)}</span>
+                            
                             <div>
                                 <h3>Descrição</h3>
-                                <p>{data?.details}</p>
+                                <p>{data?.description}</p>
                             </div>
                         </ProductInfo>
                         <button onClick={handleAddToCart}>

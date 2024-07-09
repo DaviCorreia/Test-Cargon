@@ -3,6 +3,7 @@
 
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ProductInCart } from "@/types/product";
+import { formatPrice } from "@/utils/format-price";
 import { styled } from "styled-components";
 import { DefaultPageLayout } from "../components/default-page-layout";
 import { BackBtn } from "../components/back-button";
@@ -98,12 +99,12 @@ export default function CartPage(){
     const { value, updateLocalStorage } = useLocalStorage<ProductInCart[]>("cart-items", [])
 
     const calculateTotal = (value: ProductInCart[]) => {
-       return value.reduce((sum, item) => sum += (item.price * item.quantity), 0)
+       return value.reduce((sum, item) => sum += (item.price_in_cents * item.quantity), 0)
     }
 
-    const cartTotal = (calculateTotal(value))
+    const cartTotal = formatPrice(calculateTotal(value))
     const deliveryFee = 4000;
-    const cartTotalWithDelivery = (calculateTotal(value) + deliveryFee)
+    const cartTotalWithDelivery = formatPrice(calculateTotal(value) + deliveryFee)
 
     const handleUpdateQuantity = (id: string, quantity: number) => {
         const newValue = value.map(item => {
@@ -148,7 +149,7 @@ export default function CartPage(){
                     </TotalItem>
                     <TotalItem isBold={false}>
                         <p>Entrega</p>
-                        <p>{(deliveryFee)}</p>
+                        <p>{formatPrice(deliveryFee)}</p>
                     </TotalItem>
                     <Divider/>
                     <TotalItem isBold>

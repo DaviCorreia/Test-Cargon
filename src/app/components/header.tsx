@@ -57,7 +57,7 @@ export function Header(props : HeaderProps){
     
     return(
         <TagHeader>
-            <Logo className={sairaStencil.className}href="/">CAPPUTEENO</Logo>
+            <Logo className={sairaStencil.className}href="/">CARGON MARKETPLACE</Logo>
             <div>
             <PrimaryInputWSearchIcon
                     value={search}

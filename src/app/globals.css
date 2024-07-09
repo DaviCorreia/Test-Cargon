@@ -1,18 +1,18 @@
 :root {
  
   --border-radius: 12px;
-  --logo-color: #1e1ee7;
+  --logo-color: #1069b9;
   --bg-secondary: #F3F5F6;
-  --bg-primary: #6262b7;
-  --text-dark: #737380;
+  --bg-primary: #4c9c93;
+  --text-dark: #040407;
   --shapes-dark: #09090A;
-  --text-dark-2: #41414D;
+  --text-dark-2: #09090c;
   --delete-color: #DE3838; 
   --light-blue: #ADD8E6;
   --shapes: #DCE2E6;
   --secondary-text: #617480;
   --border-color: #A8A8B3;
-  --success-color: #51B853;
+  --success-color: #156bb6;
   
 }
 

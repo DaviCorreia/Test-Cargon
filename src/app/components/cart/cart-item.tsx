@@ -1,8 +1,8 @@
 import { ProductInCart } from "@/types/product"
+import { formatPrice } from "@/utils/format-price"
 import { ChangeEvent } from "react"
 import { styled } from "styled-components"
 import { DeleteIcon } from "../icons/delete-icon"
-
 
 interface CartItemProps {
     product: ProductInCart
@@ -88,17 +88,17 @@ const SelectQuantity = styled.select`
 
 export function CartItem({ product, handleUpdateQuantity, handleDelete } : CartItemProps){
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        handleUpdateQuantity(product.name, Number(e.target.value))
+        handleUpdateQuantity(product.id, Number(e.target.value))
     }
     return(
         <Item>
-            <button onClick={() => handleDelete(product.name)} aria-label="Deletar">
+            <button onClick={() => handleDelete(product.id)} aria-label="Deletar">
                 <DeleteIcon/>
             </button>
             <img src={product.image_url}/>
             <div>
                 <h4>{product.name}</h4>
-                <p>{product.details}</p>
+                <p>{product.description}</p>
                 <div>
                     <SelectQuantity value={product.quantity} onChange={handleChange}>
                         <option value={1}>1</option>
@@ -107,7 +107,7 @@ export function CartItem({ product, handleUpdateQuantity, handleDelete } : CartI
                         <option value={4}>4</option>
                         <option value={5}>5</option>
                     </SelectQuantity>
-                    <span>{product.price}</span>
+                    <span>{formatPrice(product.price_in_cents)}</span>
                 </div>
             </div>
         </Item>
